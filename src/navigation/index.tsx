@@ -27,6 +27,7 @@ export const RootNavigator = () => {
           headerTintColor: colors.branco1,
           headerTitleStyle: {
             fontSize: 20,
+            fontWeight: 'bold',
           },
           headerBackTitleVisible: false,
           headerStyle: {
