@@ -209,7 +209,6 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				ED6973A12337F8DB434FD1F2 /* [CP] Embed Pods Frameworks */,
 				33BA84AFFE3108B706670F92 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -232,7 +231,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				4869FF875792BAA7CF37214C /* [CP] Embed Pods Frameworks */,
 				7E6A69EAFE112D3D3FDB9B39 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -455,24 +453,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BBInvestimentos-BBInvestimentosTests/Pods-BBInvestimentos-BBInvestimentosTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4869FF875792BAA7CF37214C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BBInvestimentos/Pods-BBInvestimentos-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BBInvestimentos/Pods-BBInvestimentos-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7E6A69EAFE112D3D3FDB9B39 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -511,24 +491,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ED6973A12337F8DB434FD1F2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BBInvestimentos-BBInvestimentosTests/Pods-BBInvestimentos-BBInvestimentosTests-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BBInvestimentos-BBInvestimentosTests/Pods-BBInvestimentos-BBInvestimentosTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FCCE83C6DB9584EA6205E44A /* [CP] Check Pods Manifest.lock */ = {
