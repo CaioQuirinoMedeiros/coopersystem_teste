@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
 import {Investimentos} from '../screens/investimentos';
 import {Resgate} from '../screens/resgate';
 import {Investimento} from '../screens/investimentos/investimentos.types';
+import {colors} from '../theme';
 
 export type MainNavigator = {
   investimentos: undefined;
@@ -23,6 +24,20 @@ export const RootNavigator = () => {
         screenOptions={{
           title: 'Resgate',
           headerTitleAlign: 'center',
+          headerTintColor: colors.branco1,
+          headerTitleStyle: {
+            fontSize: 20,
+          },
+          headerBackTitleVisible: false,
+          headerStyle: {
+            height: 100,
+            backgroundColor: colors.azul1,
+            borderBottomWidth: 4,
+            borderBottomColor: colors.amarelo1,
+            elevation: 0,
+          },
+          headerBackTitle: 'Voltar',
+          ...TransitionPresets.SlideFromRightIOS,
         }}>
         <Main.Screen name="investimentos" component={Investimentos} />
         <Main.Screen name="resgate" component={Resgate} />
