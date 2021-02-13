@@ -2,6 +2,7 @@
  * Paleta com todas as cores do aplicativo
  */
 export const colors = {
+  azul2: '#043a61',
   azul1: '#005aa5',
   amarelo1: '#f9e44d',
   vermelho1: '#f75959',

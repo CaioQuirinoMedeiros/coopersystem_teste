@@ -2,9 +2,14 @@ import {StyleSheet} from 'react-native';
 import {colors, spacing} from '../../theme';
 
 export const styles = StyleSheet.create({
-  acaoContainer: {
+  acoesListaContainer: {
+    paddingTop: spacing[4],
+  },
+
+  itemContainer: {
     backgroundColor: colors.branco1,
     marginBottom: spacing[3],
+    paddingLeft: spacing[4],
   },
 
   botao: {
@@ -84,12 +89,9 @@ export const styles = StyleSheet.create({
     color: colors.cinza2,
   },
 
-  itemContainer: {
-    backgroundColor: colors.branco1,
-  },
-
   tituloSecao: {
-    margin: spacing[4],
+    marginHorizontal: spacing[4],
+    marginBottom: spacing[4],
     fontSize: 14,
     color: colors.cinza3,
     letterSpacing: -0.54,
