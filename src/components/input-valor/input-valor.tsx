@@ -28,6 +28,7 @@ export const InputValor: React.FC<InputValorProps> = (props) => {
           setIsFocused(false);
           onBlur && onBlur(e);
         }}
+        ignoreNegative
         {...rest}
       />
       {!!error && <Text style={styles.error}>{error}</Text>}

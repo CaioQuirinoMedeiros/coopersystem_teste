@@ -11,18 +11,18 @@ import {
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {spacing} from '../../theme';
-import {formatarNumero} from '../../utils/formatarNumero';
-
-import {styles} from './resgate.styles';
-import {ResgateProps, Acao} from './resgate.types';
 import {InputValor} from '../../components/input-valor';
 import {Informacao} from '../../components/informacao';
 import {AlertaModal} from '../../components/alerta-modal';
+import {formatarReal} from '../../utils/formatarReal';
+
+import {styles} from './resgate.styles';
+import {ResgateProps, Acao} from './resgate.types';
 
 const isIos = Platform.OS === 'ios';
 
 export const Resgate: React.FC<ResgateProps> = (props) => {
-  const {route} = props;
+  const {route, navigation} = props;
   const investimento = route.params.investimento;
 
   const {bottom} = useSafeAreaInsets();
@@ -49,22 +49,54 @@ export const Resgate: React.FC<ResgateProps> = (props) => {
       return;
     }
 
+    if (resgateTotal <= 0) {
+      return alertaModalRef.current.exibir({
+        titulo: 'Nenhum valor...',
+        mensagem:
+          'Você não preencheu os valores que deseja resgatar dos investimentos. Por favor, preencha ao menos um valor de resgate para continuar.',
+        botoes: [{texto: 'Entendi'}],
+      });
+    }
+
+    const mensagensErro = acoes
+      .filter((acao) => {
+        return acao.resgate && acao.resgate > acao.saldo;
+      })
+      .map(
+        (acao) => `${acao.nome}: Valor máximo de ${formatarReal(acao.saldo)}`,
+      );
+
+    if (mensagensErro.length) {
+      return alertaModalRef.current.exibir({
+        titulo: 'Dados inválidos',
+        mensagem:
+          'Você preencheu um ou mais campos com valor acima do permitido:\n\n' +
+          mensagensErro.join('\n'),
+        botoes: [{texto: 'Corrigir'}],
+      });
+    }
+
     alertaModalRef.current.exibir({
       titulo: 'Resgate efetuado!',
       mensagem:
         'O valor solicitado estará disponível na sua conta em 5 dias uteis',
-      botoes: [{texto: 'Novo resgate'}],
+      botoes: [
+        {
+          texto: 'Novo resgate',
+          onPress: () => {
+            navigation.navigate('investimentos');
+          },
+        },
+      ],
     });
-  }, []);
+  }, [acoes, navigation, resgateTotal]);
 
   const renderAcao = React.useCallback(
     ({item: acao}: ListRenderItemInfo<Acao>) => {
       const acimaDoLimite = acao.resgate && acao.resgate > acao.saldo;
 
       const error = acimaDoLimite
-        ? `Valor não pode ser maior que ${formatarNumero(acao.saldo, {
-            unidade: 'R$ ',
-          })}`
+        ? `Valor não pode ser maior que ${formatarReal(acao.saldo)}`
         : undefined;
 
       return (
@@ -72,7 +104,7 @@ export const Resgate: React.FC<ResgateProps> = (props) => {
           <Informacao label={'Ação'} valor={acao.nome} />
           <Informacao
             label={'Saldo acumulado'}
-            valor={formatarNumero(acao.saldo, {unidade: 'R$ '})}
+            valor={formatarReal(acao.saldo)}
           />
           <InputValor
             label="Valor a resgatar"
@@ -102,9 +134,7 @@ export const Resgate: React.FC<ResgateProps> = (props) => {
           <Informacao label={'Nome'} valor={investimento.nome} />
           <Informacao
             label={'Saldo total disponível'}
-            valor={formatarNumero(investimento.saldoTotalDisponivel, {
-              unidade: 'R$ ',
-            })}
+            valor={formatarReal(investimento.saldoTotalDisponivel)}
           />
         </View>
         <Text style={styles.tituloSecao}>Resgate do seu jeito</Text>
@@ -118,7 +148,7 @@ export const Resgate: React.FC<ResgateProps> = (props) => {
       <View style={styles.itemContainer}>
         <Informacao
           label={'Valor total a resgatar'}
-          valor={formatarNumero(resgateTotal, {unidade: 'R$ '})}
+          valor={formatarReal(resgateTotal)}
         />
       </View>
     ),

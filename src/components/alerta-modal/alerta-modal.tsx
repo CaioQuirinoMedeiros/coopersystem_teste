@@ -130,6 +130,7 @@ export class AlertaModal extends React.Component<AlertaModalProps, State> {
                     await this.fechar();
                     onPress && onPress(e);
                   }}
+                  activeOpacity={0.75}
                   {...botaoRest}
                   style={[styles.botao, botao.style]}>
                   <Text style={styles.botaoTexto}>{texto}</Text>

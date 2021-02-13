@@ -22,9 +22,14 @@ export interface OpcoesFormatarNumero {
   /**
    * Prefixo adicionado no valor.
    */
-  unidade?: string;
+  prefixo?: string;
 }
 
+/**
+ * Função que formata um número com diversas opções configuráveis
+ * @param input valor númerico a ser formatado
+ * @param options opções para a formatação do número
+ */
 export const formatarNumero = (
   input: number,
   options?: OpcoesFormatarNumero,
@@ -33,7 +38,7 @@ export const formatarNumero = (
     precisao = 2,
     separadorDecimal = ',',
     separadorMilhares = '.',
-    unidade = '',
+    prefixo = '',
     ignorarNegativo,
   } = options || {};
 
@@ -61,7 +66,7 @@ export const formatarNumero = (
     numeroFormatado += separadorDecimal + numeroDecimal;
   }
 
-  numeroFormatado = `${sinal}${unidade}${numeroFormatado}`;
+  numeroFormatado = `${sinal}${prefixo}${numeroFormatado}`;
 
   return numeroFormatado;
 };
