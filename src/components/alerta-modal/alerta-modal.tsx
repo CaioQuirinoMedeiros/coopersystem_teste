@@ -122,10 +122,11 @@ export class AlertaModal extends React.Component<AlertaModalProps, State> {
           <Text style={styles.titulo}>{titulo}</Text>
           {!!mensagem && <Text style={styles.mensagem}>{mensagem}</Text>}
           {!!botoes &&
-            botoes.map((botao) => {
+            botoes.map((botao, botaoIndex) => {
               const {texto, onPress, ...botaoRest} = botao;
               return (
                 <TouchableOpacity
+                  key={`${botao.texto}${botaoIndex}`}
                   onPress={async (e) => {
                     await this.fechar();
                     onPress && onPress(e);

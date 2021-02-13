@@ -161,7 +161,6 @@
 				6B891E265504578047032C12 /* Pods-BBInvestimentos-tvOSTests.debug.xcconfig */,
 				B5CC7B2B99CD355D6C0D2714 /* Pods-BBInvestimentos-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
